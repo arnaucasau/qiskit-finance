@@ -21,7 +21,7 @@ concurrency:
 
 jobs:
   docs_publish:
-    if: ${{ startsWith(github.ref, 'refs/heads/stable') && contains('["t-imamichi","mtreinish","stefan-woerner","woodsp-ibm"]', github.actor) }}
+    #if: ${{ startsWith(github.ref, 'refs/heads/stable') && contains('["t-imamichi","mtreinish","stefan-woerner","woodsp-ibm"]', github.actor) }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -51,7 +51,6 @@ jobs:
           echo "earliest_version: 0.1.0" >> releasenotes/config.yaml
           tools/ignore_untagged_notes.sh
           make html
-          tools/deploy_documentation.sh
         shell: bash
   deploy-translatable-strings:
     if: ${{ startsWith(github.ref, 'refs/heads/stable') && contains('["t-imamichi","mtreinish","stefan-woerner","woodsp-ibm"]', github.actor) }}
